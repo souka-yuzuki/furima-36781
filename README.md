@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column         | Type          | Options                        |
-| ---------------| ------------- | ------------------------------ |
-| title          | string        | null: false                    |
-| explanation    | text          | null: false                    |
-| category-id    | integer       | null: false                    |
-| status         | integer       | null: false                    |
-| load           | integer       | null: false                    |
-| shipment       | integer       | null: false                    |
-| shipping_days  | integer       | null: false                    |
-| price          | integer       | null: false                    |
-| user           | references    | null: false, foreign_key: true |
+| Column           | Type          | Options                        |
+| -----------------| ------------- | ------------------------------ |
+| title            | string        | null: false                    |
+| explanation      | text          | null: false                    |
+| category_id      | integer       | null: false                    |
+| status_id        | integer       | null: false                    |
+| load_id          | integer       | null: false                    |
+| prefecture_id    | integer       | null: false                    |
+| shipping_days_id | integer       | null: false                    |
+| price            | integer       | null: false                    |
+| user             | references    | null: false, foreign_key: true |
 
 ### Association
 
@@ -55,11 +55,8 @@
 
 | Column            | Type       | Options                        |
 | ----------------- | ---------- | ------------------------------ |
-| card_number       | string     | null: false                    |
-| expiry            | integer    | null: false                    |
-| security_code     | integer    | null: false                    |
 | postal_code       | string     | null: false                    |
-| prefecture        | integer    | null: false                    |
+| prefecture_id     | integer    | null: false                    |
 | municipalities    | string     | null: false                    |
 | house_number      | string     | null: false                    |
 | building_name     | string     |                                |
