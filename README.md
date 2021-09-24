@@ -7,7 +7,6 @@
 | nickname                | string   | null: false               |
 | email                   | string   | null: false, unique: true |
 | encrypted_password      | string   | null: false               |
-| password_confirmation   | string   | null: false               |
 | first_name              | string   | null: false               |
 | last_name               | string   | null: false               |
 | first_name_reading      | string   | null: false               |
@@ -35,7 +34,7 @@
 
 ### Association
 
-- belongs_to :purchase
+- has_one :purchase
 - belongs_to :user
 
 ## purchase テーブル
@@ -47,9 +46,9 @@
 
 ### Association
 
-- has_one :item
-- belongs_to :address
+- has_one :address
 - belongs_to :user
+- belongs_to :item
 
 ## addresses テーブル
 
@@ -60,9 +59,9 @@
 | municipalities    | string     | null: false                    |
 | house_number      | string     | null: false                    |
 | building_name     | string     |                                |
-| telephone_number  | integer    | null: false                    |
+| telephone_number  | string     | null: false                    |
 | purchase          | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
