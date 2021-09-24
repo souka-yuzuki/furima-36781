@@ -12,26 +12,26 @@
 | last_name               | string   | null: false |
 | first_name_reading      | string   | null: false |
 | last_name_reading       | string   | null: false |
-| birthday                | integer  | null: false |
+| birthday                | Date     | null: false |
 
 ### Association
 
 - has_many :items
+- has_many :purchases
 
 ## items テーブル
 
 | Column         | Type          | Options                        |
 | ---------------| ------------- | ------------------------------ |
-| image          | ActiveStorage | null: false                    |
 | title          | string        | null: false                    |
 | explanation    | text          | null: false                    |
-| category       | integer       | null: false                    |
+| category-id    | integer       | null: false                    |
 | status         | integer       | null: false                    |
 | load           | integer       | null: false                    |
 | shipment       | integer       | null: false                    |
 | shipping_days  | integer       | null: false                    |
 | price          | integer       | null: false                    |
-| user_id        | references    | null: false, foreign_key: true |
+| user           | references    | null: false, foreign_key: true |
 
 ### Association
 
@@ -39,6 +39,19 @@
 - belongs_to :user
 
 ## purchase テーブル
+
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| user              | references | null: false, foreign_key: true |
+| item              | references | null: false, foreign_key: true |
+
+### Association
+
+- has_one :item
+- belongs_to :address
+- belongs_to :user
+
+## addresses テーブル
 
 | Column            | Type       | Options                        |
 | ----------------- | ---------- | ------------------------------ |
@@ -51,8 +64,8 @@
 | house_number      | string     | null: false                    |
 | building_name     | string     |                                |
 | telephone_number  | integer    | null: false                    |
-| item_id           | references | null: false, foreign_key: true |
+| purchase          | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :item
+- has_one :purchase
