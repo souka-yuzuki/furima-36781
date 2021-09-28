@@ -39,6 +39,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
+      it '全角文字を含むパスワードでは登録できない' do
+        @user.password = 'あいうえおか'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
+      end
       it 'パスワードは、6文字未満では登録できない' do
         @user.password = '12345'
         @user.valid?
