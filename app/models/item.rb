@@ -7,12 +7,14 @@ class Item < ApplicationRecord
   belongs_to :shipping_days
   has_one_attached :image
 
-  validates :title, :explanation, presence: true
+  validates :title,       presence: true
+  validates :explanation, presence: true
 
-  validates :category_id, numericality: { other_than: 1, message: "can't be blank"}
-  validates :status_id, numericality: { other_than: 1, message: "can't be blank"}
-  validates :load_id, numericality: { other_than: 1, message: "can't be blank"}
-  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank"}
-  validates :shipping_days_id, numericality: { other_than: 1, message: "can't be blank"}
-
+  validates :category_id,       numericality: { other_than: 1, message: "can't be blank"}
+  validates :status_id,         numericality: { other_than: 1, message: "can't be blank"}
+  validates :load_id,           numericality: { other_than: 1, message: "can't be blank"}
+  validates :prefecture_id,     numericality: { other_than: 1, message: "can't be blank"}
+  validates :shipping_days_id,  numericality: { other_than: 1, message: "can't be blank"}
+  PRICE_REGEX = /\A[300]|[0-9]{3,7}+\Z/.freeze
+  validates_format_of :price, with: PRICE_REGEX, message: 'は半角数字（スペースなし）で設定してください'
 end
