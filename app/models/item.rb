@@ -4,9 +4,10 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :load
   belongs_to :prefecture
-  belongs_to :shipping_days
+  belongs_to :shipping_day
   belongs_to :user
   has_one_attached :image
+  #has_one :purchase
 
   validates :title,             presence: true
   validates :explanation,       presence: true
