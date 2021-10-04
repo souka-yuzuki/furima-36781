@@ -18,5 +18,5 @@ class Item < ApplicationRecord
   validates :prefecture_id,     numericality: { other_than: 0, message: "can't be blank"}
   validates :shipping_days_id,  numericality: { other_than: 0, message: "can't be blank"}
   PRICE_REGEX = /\A([3-9][0-9][0-9]|[0-9]{4,7})\Z/.freeze
-  validates_format_of :price, with: PRICE_REGEX, message: 'は半角数字（スペースなし）で設定してください'
+  validates_format_of :price, with: PRICE_REGEX, message: 'は半角数字で設定してください'
 end
