@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_item, only: [:show, :edit, :update]
 
   def index
@@ -24,11 +24,17 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
+    unless current_user.id == @item.user_id #|| @item.purchase.present?
+      redirect_to action: :index
+    end
   end
 
   def update
-    
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
   end
 
   private
